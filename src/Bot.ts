@@ -21,8 +21,10 @@ client.on("messageCreate", async (message: any) => {
     const messages = await message.channel.messages.fetch({ limit: 100 });
 
     // Get the content of the messages
-    const content = messages.map((m: any) => m.content).join(" ");
-
+    const content = messages
+      .map((m: any) => `${m.author.username}: ${m.content}`)
+      .join(" \n");
+    console.log(content);
     // Get the summary
     const summary = await getSummary(content);
 
