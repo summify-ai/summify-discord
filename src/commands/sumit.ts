@@ -4,11 +4,11 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("sumit")
     .setDescription(
-      "Summarizes the last 100 messages and DMs a summary to you!"
+      "DM's you a summary of unread messages in the current channel"
     ),
   async execute(interaction: any) {
     const { getSummary } = require("../services/summary");
-    const { user, channel } = interaction;
+    const { user, channel, guild } = interaction;
 
     const messages = await channel.messages.fetch({ limit: 100 });
 
@@ -17,8 +17,10 @@ module.exports = {
       .map((m: any) => `${m.author.username}: ${m.content}`)
       .join(" \n");
     console.log(content);
+
     // Get the summary
     const summary = await getSummary(content);
-    await user.send(summary);
+    // Send the summary to the user with channel name and guild name
+    await user.send(`Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n${summary}`);
   },
 };
