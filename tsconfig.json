@@ -21,7 +21,7 @@
   "files": ["src/Bot.js"],
   "include": [
     "./**/*.ts",
-    "src/gpt/model.js",
+    "src/openai/model.js",
     "src/listeners/ready.js",
     "src/listeners/interactionCreate.js",
     "src/listeners/test.js",
