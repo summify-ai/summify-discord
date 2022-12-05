@@ -1,5 +1,6 @@
 // Require the necessary discord.js classes
 const { Client, Events, Collection, GatewayIntentBits } = require("discord.js");
+const { getSummary } = require("./openai/summary");
 require("dotenv").config();
 
 const client = new Client({
@@ -17,7 +18,7 @@ client.on("ready", (message: any) => {
 
 client.on("messageCreate", async (message: any) => {
   if (message.content.startsWith("!sumit")) {
-    const openAIResponse = "test 123";
+    const openAIResponse = await getSummary(message.content.slice(6));
     message.reply(`Here is a summary: ${openAIResponse}`);
   }
   console.log(message.content);
