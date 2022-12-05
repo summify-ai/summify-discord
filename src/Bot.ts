@@ -16,8 +16,9 @@ client.on("ready", (message: any) => {
 });
 
 client.on("messageCreate", async (message: any) => {
-  if (message.content.startsWith("!ping")) {
-    message.reply("Pong!");
+  if (message.content.startsWith("!sumit")) {
+    const openAIResponse = "test 123";
+    message.reply(`Here is a summary: ${openAIResponse}`);
   }
   console.log(message.content);
 });

@@ -5,7 +5,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export async function getSummart(text: string) {
+export async function getSummarry(text: string) {
   const completion = await openai.createCompletion({
     model: "text-davinci-002",
     prompt: text,
