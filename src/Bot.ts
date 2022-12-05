@@ -1,4 +1,3 @@
-// Require the necessary discord.js classes
 const { Client, Events, Collection, GatewayIntentBits } = require("discord.js");
 const { getSummary } = require("./openai/summary");
 require("dotenv").config();
@@ -18,8 +17,16 @@ client.on("ready", (message: any) => {
 
 client.on("messageCreate", async (message: any) => {
   if (message.content.startsWith("!sumit")) {
-    const openAIResponse = await getSummary(message.content.slice(6));
-    message.reply(`Here is a summary: ${openAIResponse}`);
+    // Get the message history of the channel
+    const messages = await message.channel.messages.fetch({ limit: 100 });
+
+    // Get the content of the messages
+    const content = messages.map((m: any) => m.content).join(" ");
+
+    // Get the summary
+    const summary = await getSummary(content);
+
+    // Send the summary
+    message.channel.send(summary);
   }
-  console.log(message.content);
 });
