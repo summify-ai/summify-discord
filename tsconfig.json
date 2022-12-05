@@ -18,7 +18,14 @@
     "sourceMap": false,
     "baseUrl": "./"
   },
-  "files": ["src/Bot.ts"],
-  "include": ["./**/*.ts"],
+  "files": ["src/Bot.js"],
+  "include": [
+    "./**/*.ts",
+    "src/gpt/model.js",
+    "src/listeners/ready.js",
+    "src/listeners/interactionCreate.js",
+    "src/listeners/test.js",
+    "src/Bot.js"
+  ],
   "exclude": ["node_modules", "dist"]
 }
