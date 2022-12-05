@@ -18,14 +18,7 @@
     "sourceMap": false,
     "baseUrl": "./"
   },
-  "files": ["src/Bot.js"],
-  "include": [
-    "./**/*.ts",
-    "src/openai/model.js",
-    "src/listeners/ready.js",
-    "src/listeners/interactionCreate.js",
-    "src/listeners/test.js",
-    "src/Bot.js"
-  ],
+  "files": ["src/Bot.ts"],
+  "include": ["./**/*.ts", "src/openai/summary.ts", "src/Bot.js"],
   "exclude": ["node_modules", "dist"]
 }
