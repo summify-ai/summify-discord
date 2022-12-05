@@ -7,7 +7,7 @@ module.exports = {
       "Summarizes the last 100 messages and DMs a summary to you!"
     ),
   async execute(interaction: any) {
-    const { getSummary } = require("../openai/summary");
+    const { getSummary } = require("../services/summary");
     const { user, channel } = interaction;
 
     const messages = await channel.messages.fetch({ limit: 100 });

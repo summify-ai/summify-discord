@@ -19,6 +19,6 @@
     "baseUrl": "./"
   },
   "files": ["src/Bot.ts"],
-  "include": ["./**/*.ts", "src/openai/summary.ts", "src/Bot.js"],
+  "include": ["./**/*.ts", "src/services/summary.ts", "src/Bot.js"],
   "exclude": ["node_modules", "dist"]
 }
