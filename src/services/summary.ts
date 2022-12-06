@@ -10,8 +10,9 @@ export async function getSummary(text: string) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Can you summarize this, keep in mind each section is one person talking, as much as you can keep track of the conversation and sum it up: ${text}`,
+      prompt: ` This is a converstation between a group on Discord: ${text}\n\n ... Can you summarize it each individual line is a message formated as "username: message". I would like you to summarize the conversation in a way that really captures the essence of the conversation and then a bullet list of the most important topics and links shared, in a non-repetitive manner. \n\n--\n\n`,
       max_tokens: 1024,
+      temperature: 0.0,
     });
     console.log(completion.data.choices[0].text);
     return completion.data.choices[0].text;
