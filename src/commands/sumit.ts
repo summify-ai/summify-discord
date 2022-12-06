@@ -18,9 +18,17 @@ module.exports = {
       .join(" \n");
     console.log(content);
 
+    if (process.env.SAVE_MESSAGES === "true") {
+      // Save the content to a file
+      const fs = require("fs");
+      fs.writeFileSync("messages.txt", content);
+    }
+
     // Get the summary
     const summary = await getSummary(content);
     // Send the summary to the user with channel name and guild name
-    await user.send(`Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n${summary}`);
+    await user.send(
+      `Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n${summary}`
+    );
   },
 };
