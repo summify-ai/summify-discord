@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("sumit")
+    .setName("summify")
     .setDescription(
       "DM's you a summary of unread messages in the current channel"
     ),
