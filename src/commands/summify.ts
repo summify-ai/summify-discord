@@ -1,3 +1,5 @@
+import { EmbedBuilder } from "discord.js";
+
 const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
@@ -28,9 +30,14 @@ module.exports = {
     // Get the summary
     const summary = await getSummary(content);
 
+    const summaryEmbed = new EmbedBuilder()
+      .setColor(0x0099ff)
+      .setTitle(`${guild.name} : ${channel.name}`)
+      .setDescription(summary)
+      // .setThumbnail("https://i.imgur.com/VM8Y3MM.gif")
+      .setTimestamp();
+
     // Send the summary to the user with channel name and guild name
-    await user.send(
-      `Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n\n............\n\n${summary}`
-    );
+    await user.send({ embeds: [summaryEmbed] });
   },
 };
