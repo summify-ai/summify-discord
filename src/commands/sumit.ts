@@ -28,7 +28,7 @@ module.exports = {
     const summary = await getSummary(content);
     // Send the summary to the user with channel name and guild name
     await user.send(
-      `Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n${summary}`
+      `Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n\n............\n\n${summary}`
     );
   },
 };
