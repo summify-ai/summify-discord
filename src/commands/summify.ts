@@ -23,9 +23,11 @@ module.exports = {
       const fs = require("fs");
       fs.writeFileSync("messages.txt", content);
     }
+    await interaction.reply({ content: "Check your DMs ;)", ephemeral: true });
 
     // Get the summary
     const summary = await getSummary(content);
+
     // Send the summary to the user with channel name and guild name
     await user.send(
       `Summary for your unread messages from **#${channel.name}** in **${guild.name}:**\n\n............\n\n${summary}`
