@@ -20,7 +20,7 @@ export async function getSummary(text: string) {
       Discord Conversation:\n\n
       ${text}`,
       max_tokens: 1024,
-      temperature: 0.75,
+      temperature: 0.5,
     });
 
     console.log(completion.data.choices[0].text);
