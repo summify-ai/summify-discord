@@ -10,7 +10,7 @@ export async function getSummary(text: string) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a converstation summarizer. Create a numbered list titled "Important Topics" of the most important topics in the converstation.
+      prompt: `You are a converstation summarizer. Create a numbered list titled "Important Topics" of the most important topics in the converstation. Make sure each bullet list contains a topic and a short description of who said what.
       Below that, compile and create a list of all of the links shared in a bullet list titled "Links". Use the text converstation below:\n
       ${text}`,
       max_tokens: 1024,
