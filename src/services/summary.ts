@@ -10,17 +10,12 @@ export async function getSummary(text: string) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a summarization bot that is designed to accurately extract peak insights from discord messages.
-      The next block of text below is a conversation between a group of members in a Discord server. Each individual line is a message
-      formatted as "username: message". I would like you to summarize the conversation in a way that really captures the
-      essence of the conversation in a non-repetitive manner in four sentences, not five sentences, not three sentences.
-      After the summary,  create a bulleted list titled "Important Topics" of the most important topics in the converstation.
-      Below that, compile and create a list of all of the links shared in a bullet list titled "Links".\n\n
-      
-      Discord Conversation:\n\n
+      prompt: `You are a converstation summarizer. Create a numbered list titled "Important Topics" of the most important topics in the converstation.
+      Below that, compile and create a list of all of the links shared in a bullet list titled "Links". Use the text converstation below:\n
       ${text}`,
       max_tokens: 1024,
       temperature: 0.5,
+      top_p: 1,
     });
 
     console.log(completion.data.choices[0].text);
