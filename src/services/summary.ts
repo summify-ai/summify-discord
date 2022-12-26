@@ -14,7 +14,7 @@ export async function getSummary(text: string) {
       Below that, compile and create a list of all of the links shared in a bullet list titled "Links". Use the text converstation below:\n
       ${text}`,
       max_tokens: 1024,
-      temperature: 0.5,
+      temperature: 0.4,
       top_p: 1,
     });
 
