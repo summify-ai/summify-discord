@@ -8,19 +8,19 @@ const openai = new OpenAIApi(configuration);
 
 export async function getSummary(text: string) {
   try {
-    const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `You are a converstation summarizer. Create a numbered list titled "Important Topics" of the most important topics in the converstation. Make sure each bullet list contains a topic and a short summarization of the essence of the converstation, keep it concise.
-      Below that, compile and create a list of all of the links shared in a bullet list titled "Links". Wrap the link in <> tags. Converstation:\n
-      ${text}`,
-      max_tokens: 1024,
-      temperature: 0.48,
-      top_p: 1,
+    const completion = await openai.createChatCompletion({
+      model: "gpt-4",
+      messages: [
+        {
+          role: "system",
+          content: `Summarize the conversation by creating a numbered list called "Important Topics" with concise summaries of key points. Also, compile a list of shared links in a bullet list called "Links" using <> tags. Conversation:`,
+        },
+        { role: "user", content: text },
+      ],
     });
-
-    console.log(completion.data.choices[0].text);
-    return completion.data.choices[0].text;
+    return completion.data.choices[0].message?.content;
   } catch (error) {
+    console.error(error);
     return "OpenAI error";
   }
 }
