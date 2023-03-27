@@ -47,7 +47,7 @@ module.exports = {
     // Get the summary
     const summary = await getSummary(content);
 
-    const summaryMessage = `***${guild.name}*** in **#${channel.name}** \n ${summary}`;
+    const summaryMessage = `***GPT4 Summary for ${guild.name} #${channel.name}*** \n ${summary}`;
 
     await prisma.summary.create({
       data: {
