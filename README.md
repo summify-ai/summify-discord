@@ -19,7 +19,7 @@ Summify is a Discord bot that DMs you a summary of unread messages in the curren
 
 ### Installation
 
-1. **Clone the repository:**
+1. **Clone the repository and install packages:**
    ```bash
    git clone https://github.com/yourusername/summify-discord.git
    cd summify-discord
